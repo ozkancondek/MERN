@@ -26,3 +26,5 @@ instructions
 -npm init -y (project start for server)
 -npm i express
 -npm i nodemon --save-dev
+-npm i mongoose(to connect mongodb)
+-npm i dotenv

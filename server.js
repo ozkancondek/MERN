@@ -1,15 +1,19 @@
-//for api requests
+//only for api requests
 const express = require("express");
+
+require("dotenv").config();
+
+const connectDB = require("./models/connectDB");
 
 const app = express();
 
 const router = require("./routes/router");
 
+//trigger connect to db function
+connectDB();
+
 app.use("/api", router);
 
-const port = 5000;
-const host = "localhost";
-
-app.listen(port, host, () => {
+app.listen(process.env.PORT, () => {
   console.log("I am listening ");
 });
