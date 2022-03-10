@@ -25,3 +25,4 @@ Tech Stack
 instructions
 -npm init -y (project start for server)
 -npm i express
+-npm i nodemon --save-dev
