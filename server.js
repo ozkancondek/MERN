@@ -12,6 +12,9 @@ const router = require("./routes/router");
 //trigger connect to db function
 connectDB();
 
+//mw for req.body
+app.use(express.json());
+
 app.use("/api", router);
 
 app.listen(process.env.PORT, () => {
