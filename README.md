@@ -21,3 +21,7 @@ Tech Stack
 -View(Client) React
 -Payment(Stripe)
 -Production-Heroku deploy
+
+instructions
+-npm init -y (project start for server)
+-npm i express
