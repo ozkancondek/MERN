@@ -1,5 +1,7 @@
 const User = require("../models/UserModel");
 
+const bcrypt = require("bcryptjs");
+
 exports.authRegister = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -9,11 +11,15 @@ exports.authRegister = async (req, res) => {
   //-crypt password
   //-save user to db
 
+  const salt = await bcrypt.genSalt(10);
+
+  const newPassword = await bcrypt.hash(password, salt);
+
   const user = new User({
     firstName,
     lastName,
     email,
-    password,
+    password: newPassword,
   });
   await user.save();
 

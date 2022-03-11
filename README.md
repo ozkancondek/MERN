@@ -28,3 +28,4 @@ instructions
 -npm i nodemon --save-dev
 -npm i mongoose(to connect mongodb)
 -npm i dotenv
+-npm i bcryptjs
