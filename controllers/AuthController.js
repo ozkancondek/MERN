@@ -1,6 +1,7 @@
 const User = require("../models/UserModel");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
+const { exists } = require("../models/UserModel");
 
 exports.authRegister = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
@@ -34,6 +35,27 @@ exports.authRegister = async (req, res) => {
 
   res.send("register completed");
 };
-exports.authLogin = (req, res) => {
+exports.authLogin = async (req, res) => {
+  const { email, password } = req.body;
+
+  //-validate the fields
+
+  const validationErr = validationResult(req);
+  if (validationErr.errors.length > 0) {
+    return res.status(400).json({ errors: validationErr.array() });
+  }
+  //-user exist
+  const userData = await User.findOne({ email });
+  if (!userData) {
+    return res.status(400).json({ errors: [{ message: "user dosnt exist" }] });
+  }
+  //-password compare
+  const isPasswordMatch = await bcrypt.compare(password, userData.password);
+  if (!isPasswordMatch) {
+    return res
+      .status(400)
+      .json({ errors: [{ message: "invalid credentials" }] });
+  }
+  //-authentication return JSON WEB TOKEN-JWT
   res.send("register completed");
 };
