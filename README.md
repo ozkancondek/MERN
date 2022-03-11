@@ -27,6 +27,7 @@ instructions
 -npm i express
 -npm i nodemon --save-dev
 -npm i mongoose(to connect mongodb)
--npm i dotenv
--npm i bcryptjs
--npm i express-validator
+-npm i dotenv(.env file configuration)
+-npm i bcryptjs(password cryption)
+-npm i express-validator(validate fields)
+-npm i jsonwebtoken(authentication)

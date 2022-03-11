@@ -2,6 +2,7 @@ const User = require("../models/UserModel");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const { exists } = require("../models/UserModel");
+const jwt = require("jsonwebtoken");
 
 exports.authRegister = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
@@ -57,5 +58,15 @@ exports.authLogin = async (req, res) => {
       .json({ errors: [{ message: "invalid credentials" }] });
   }
   //-authentication return JSON WEB TOKEN-JWT
-  res.send("register completed");
+  jwt.sign(
+    { userData },
+    process.env.JWT_SECRET_KEY,
+    { expiresIn: 3600 },
+    (err, token) => {
+      if (err) {
+        return res.status(400).json({ errors: [{ message: "Unknown error" }] });
+      }
+      res.send(token);
+    }
+  );
 };
