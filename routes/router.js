@@ -1,5 +1,5 @@
 const express = require("express");
-
+const { check } = require("express-validator");
 const router = express.Router();
 
 const AuthRouter = require("./AuthRouter");
@@ -11,7 +11,22 @@ const BookRouter = require("./BookRouter");
  * @desc auth endpoint
  
 */
-router.use("/auth", AuthRouter);
+router.use(
+  "/auth",
+  [
+    check(
+      //middleware
+      "password",
+      "please enter the password with 6 and more character"
+    ).isLength({ min: 6 }),
+    check(
+      //middleware
+      "email",
+      "please enter a valid email"
+    ).isEmail(),
+  ],
+  AuthRouter
+);
 /**
  * @route  /api/profile
  * @desc profile endpoint
