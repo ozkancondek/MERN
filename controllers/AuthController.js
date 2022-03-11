@@ -1,11 +1,21 @@
-exports.authRegister = (req, res) => {
+const User = require("../models/UserModel");
+
+exports.authRegister = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
-  console.log("fields: ", firstName, lastName, email, password);
+
   //TODO
   //-validate the fields
   //-validate the fields
   //-crypt password
   //-save user to db
+
+  const user = new User({
+    firstName,
+    lastName,
+    email,
+    password,
+  });
+  await user.save();
 
   res.send("register completed");
 };
