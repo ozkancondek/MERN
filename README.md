@@ -31,3 +31,13 @@ instructions
 -npm i bcryptjs(password cryption)
 -npm i express-validator(validate fields)
 -npm i jsonwebtoken(authentication)
+-npm i concurrently --save-dev (start both backend and frontend)
+
+---
+
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1",
+"start": "node server.js",
+"start-client": "npm start --prefix client" or "cd client && npm start"
+},
+npm run start-client
