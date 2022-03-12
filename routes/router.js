@@ -23,7 +23,7 @@ router.use("/profile", ProfileRouter);
  * @desc book endpoint
  
 */
-router.use("/book", BookRouter);
+router.use("/books", BookRouter);
 module.exports = router;
 //another import method
 //exports.router=express.Router()
