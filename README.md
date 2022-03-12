@@ -32,6 +32,7 @@ instructions
 -npm i express-validator(validate fields)
 -npm i jsonwebtoken(authentication)
 -npm i concurrently --save-dev (start both backend and frontend)
+-npm i antd
 
 ---
 
