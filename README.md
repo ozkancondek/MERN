@@ -33,6 +33,10 @@ instructions
 -npm i jsonwebtoken(authentication)
 -npm i concurrently --save-dev (start both backend and frontend)
 -npm i antd
+-npm i cors (to prevent to conflict beween loccl 3000 and 5000)
+-but dont use it in production phase
+-we can forward 300 to 500
+-go to package json in client side and write proxy
 
 ---
 
