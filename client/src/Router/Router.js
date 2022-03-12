@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Main from "../pages/Main";
 import Signup from "../pages/Signup";
@@ -19,26 +19,30 @@ function AppRouter() {
   // const { currentUser } = useContext(FirebaseAuthContext);
   const currentUser = "sdf";
   return (
-    <Router>
+    <BrowserRouter>
       <Navbar />
       <Content>
-        <Switch>
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/signin" component={Signin} />
-          <Route exact path="/books" component={BookList} />
-          <Route exact path="/forgot-password" component={ForgotPassword} />
-          <Route exact path="/books:id" component={BookDetail} />
+        <Routes>
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/signin" element={<Signin />} />
+          <Route exact path="/books" element={<BookList />} />
+          <Route exact path="/forgot-password" element={<ForgotPassword />} />
+          <Route exact path="/books:id" element={<BookDetail />} />
           <Route
             exact
             path="/profile"
-            component={currentUser ? Dashboard : Signin}
+            element={currentUser ? <Dashboard /> : <Signin />}
           />
-          <Route exact path="/cart" component={currentUser ? Cart : Signin} />
-          <Route path="/" component={Main} />
-        </Switch>
+          <Route
+            exact
+            path="/cart"
+            element={currentUser ? <Cart /> : <Signin />}
+          />
+          <Route path="/" element={<Main />} />
+        </Routes>
       </Content>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 

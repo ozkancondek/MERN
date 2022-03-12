@@ -1,5 +1,5 @@
 import { Form, Input, Button } from "antd";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { postData } from "../helper/PostData";
 import { toast } from "react-toastify";
 
@@ -16,13 +16,13 @@ const validateMessages = {
 };
 
 const Signup = () => {
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     postData("/api/auth/register", values)
       .then((data, err) => {
         toast("Successfully registered");
-        history.push("/");
+        navigate("/");
       })
       .catch((err) => {
         toast(err?.message || "An error occured");

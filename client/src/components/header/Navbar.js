@@ -1,8 +1,13 @@
 import { useState, useContext } from "react";
 import { Layout, Menu } from "antd";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Badge } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import {
+  ShoppingCartOutlined,
+  HeartOutlined,
+  ReadOutlined,
+  ShoppingOutlined,
+} from "@ant-design/icons";
 import { AuthContext } from "../../context/AuthContext";
 
 const { Header } = Layout;
@@ -10,10 +15,10 @@ const { Header } = Layout;
 const Navbar = () => {
   const { isLoggedIn, setLoggedIn } = useContext(AuthContext);
   const [current, setCurrent] = useState("home");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogoClick = (e) => {
-    history.push(`/`);
+    navigate(`/`);
   };
 
   const handleLogout = () => {
@@ -24,18 +29,26 @@ const Navbar = () => {
     setCurrent({ current: e.key });
     if (e.key === "logout") {
       handleLogout();
-    } else history.push(`/${e.key}`);
+    } else navigate(`/${e.key}`);
   };
 
   return (
     <Header>
-      <img
+      <div
         className="logo"
-        src="https://clarusway.com/wp-content/uploads/2020/09/cw_son_editted.png"
+        src="https://image.shutterstock.com/image-photo/image-260nw-722253286.jpg"
         alt="logo"
         onClick={handleLogoClick}
-      />
+      >
+        {" "}
+        <ReadOutlined style={{ fontSize: "35px" }} />
+        <HeartOutlined style={{ fontSize: "35px" }} />
+        <ShoppingOutlined style={{ fontSize: "35px" }} />
+      </div>
+
       <Menu
+        style={{ border: "2px solid red" }}
+        inlineCollapsed={false}
         onClick={handleClick}
         theme="dark"
         mode="horizontal"

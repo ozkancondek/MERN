@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import { postData } from "../helper/PostData";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
@@ -14,7 +14,7 @@ const tailLayout = {
 };
 
 const Signin = () => {
-  let history = useHistory();
+  const navigate = useNavigate();
   const { setLoggedIn } = useContext(AuthContext);
 
   const onFinish = (values) => {
@@ -22,7 +22,7 @@ const Signin = () => {
       .then((data) => {
         localStorage.setItem("token", data.token);
         setLoggedIn(true);
-        history.push("/");
+        navigate("/");
       })
       .catch((err) => {
         toast(err?.message || "An error occured");
