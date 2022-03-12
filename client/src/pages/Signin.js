@@ -23,6 +23,7 @@ const Signin = () => {
         localStorage.setItem("token", data.token);
         setLoggedIn(true);
         navigate("/");
+        //console.log(data);**********************************************
       })
       .catch((err) => {
         toast(err?.message || "An error occured");

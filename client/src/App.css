@@ -9,12 +9,14 @@
   justify-content: space-between;
 }
 .logo {
-  width: 180px;
+  width: 160px;
   margin: 8px;
   padding: 5px;
   cursor: pointer;
-  color: white;
-  border-bottom: 4px solid white;
+  color: rgb(103, 138, 213);
+  border-bottom: 4px solid rgba(255, 255, 255, 0.65);
+  font-family: "Times New Roman", Times, serif;
+
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -66,7 +68,6 @@
   margin: 0 20px;
 }
 .cart-icon {
-  font-size: 25px;
   color: rgba(255, 255, 255, 0.65);
 }
 

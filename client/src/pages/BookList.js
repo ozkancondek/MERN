@@ -12,12 +12,13 @@ const BookList = () => {
   const [bookList, setBookList] = useState([]);
   const [filteredBookList, setFilteredBookList] = useState([]);
 
+  //get booklist from db and assign to bookList state
   useEffect(() => {
     fetchData("/api/books").then((data) => {
       setBookList(data?.bookList);
     });
   }, []);
-
+  //filter data according to change then assign it to  filteredBookList state
   useEffect(() => {
     const newList =
       selectedTag === "Any"
@@ -54,9 +55,7 @@ const BookList = () => {
                   key={index}
                   title={book?.title}
                   description={book?.author}
-                  imgSrc={`http://placeimg.com/140/200/${
-                    book?.category || "any"
-                  }`}
+                  imgSrc={book?.image}
                 />
               );
             })
