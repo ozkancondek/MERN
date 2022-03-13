@@ -15,18 +15,18 @@ const tailLayout = {
 
 const Signin = () => {
   const navigate = useNavigate();
-  const { setLoggedIn } = useContext(AuthContext);
+  const { setLoggedIn, isLoggedIn } = useContext(AuthContext);
 
   const onFinish = (values) => {
     postData("/api/auth/login", values)
       .then((data) => {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data);
         setLoggedIn(true);
         navigate("/");
-        //console.log(data);**********************************************
       })
       .catch((err) => {
         toast(err?.message || "An error occured");
+        console.log(err.message);
       });
   };
 
