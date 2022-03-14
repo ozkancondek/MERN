@@ -1,4 +1,5 @@
 import { Layout, Button } from "antd";
+import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
@@ -11,9 +12,7 @@ function Main() {
       <Button
         ghost
         className="main-button"
-        onClick={() => {
-          console.log(isLoggedIn);
-        }}
+        /*      onClick={ } */
       >
         Get Started
       </Button>

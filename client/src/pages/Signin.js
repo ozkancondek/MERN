@@ -21,12 +21,13 @@ const Signin = () => {
     postData("/api/auth/login", values)
       .then((data) => {
         localStorage.setItem("token", data);
+        toast("Successfully registered");
         setLoggedIn(true);
         navigate("/");
       })
       .catch((err) => {
+        console.log(err);
         toast(err?.message || "An error occured");
-        console.log(err.message);
       });
   };
 
