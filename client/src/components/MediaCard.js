@@ -13,7 +13,7 @@ export const MediaCard = ({ title, description, imgSrc }) => {
           hoverable
           loading={loading}
           className="media-card"
-          cover={<img alt="cover" src={imgSrc} />}
+          cover={<img alt="cover" src={imgSrc} height="350px" />}
         >
           <Meta title={title} description={description} />
         </Card>
