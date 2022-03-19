@@ -17,7 +17,7 @@ const { Content } = Layout;
 
 function AppRouter() {
   // const { currentUser } = useContext(FirebaseAuthContext);
-  const currentUser = "sdf";
+  const currentUser = localStorage.getItem("token");
   return (
     <BrowserRouter>
       <Navbar />
