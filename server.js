@@ -28,6 +28,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(express.static("client/build"));
 
+//listen to server
 app.listen(process.env.PORT, () => {
   console.log("I am listening ");
 });
