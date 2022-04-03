@@ -185,8 +185,12 @@
 .quantity {
   padding-top: 20px;
   margin-right: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
-.quantity input {
+.quantity p {
   -webkit-appearance: none;
   border: none;
   text-align: center;
@@ -194,6 +198,8 @@
   font-size: 16px;
   color: #43484d;
   font-weight: 300;
+
+  margin-top: 10px;
 }
 
 .quantity button[class*="btn"] {
@@ -261,4 +267,15 @@ input:focus {
 
 .book-list-wrapper > div {
   margin: 20px;
+}
+
+/* card skeleton container*/
+
+.media-card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: fit-content;
+  height: 500px;
 }

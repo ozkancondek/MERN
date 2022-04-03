@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   DeleteOutlined,
   MinusCircleOutlined,
@@ -6,36 +6,47 @@ import {
 } from "@ant-design/icons";
 import StripeCheckout from "react-stripe-checkout";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-export default function Cart({}) {
+export default function Cart(e) {
+  const { selectedBookList } = useContext(AuthContext);
   return (
     <div>
-      <div class="shopping-cart">
-        <h1 class="title">Shopping Cart</h1>
+      <div className="shopping-cart">
+        <h1 className="title">Shopping Dashboard</h1>
 
-        <div class="item">
-          <div class="buttons">
-            <DeleteOutlined style={{ fontSize: 25 }} />
-          </div>
-          <div class="image">
-            <img src="http://placeimg.com/140/200/animals" alt="" />
-          </div>
-          <div class="description">
-            <span>Common Projects</span>
-            <span>Bball High</span>
-            <span>White</span>
-          </div>
-          <div class="quantity">
-            <button class="minus-btn" type="button" name="button">
-              <MinusCircleOutlined />
-            </button>
-            <input type="text" name="name" value="1" />
-            <button class="plus-btn" type="button" name="button">
-              <PlusCircleOutlined />
-            </button>
-          </div>
-          <div class="total-price">$549</div>
-        </div>
+        {selectedBookList.length !== 0 ? (
+          selectedBookList.map((book, index) => {
+            return (
+              <div className="item" key={index}>
+                <div className="buttons">
+                  <DeleteOutlined style={{ fontSize: 25 }} />
+                </div>
+                <div className="image">
+                  <img src={book.image} alt="" />
+                </div>
+                <div className="description">
+                  <span>{book.bookName}</span>
+
+                  <span>White</span>
+                </div>
+                <div className="quantity">
+                  <button className="minus-btn" type="button" name="button">
+                    <MinusCircleOutlined />
+                  </button>
+                  <p>{book.count}</p>
+                  <button className="plus-btn" type="button" name="button">
+                    <PlusCircleOutlined />
+                  </button>
+                </div>
+                <div className="total-price">{`$${book.price}`}</div>
+              </div>
+            );
+          })
+        ) : (
+          <h1 className="title">Choose some books</h1>
+        )}
         <StripeCheckout
           stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
           token={() => toast("OK")}
@@ -43,7 +54,7 @@ export default function Cart({}) {
           //  billingAddress
           //  shippingAddress
           panelLabel="Pay" // prepended to the amount in the bottom pay button
-          amount={54900} // cents
+          amount={75} // cents
           currency="USD"
         />
       </div>

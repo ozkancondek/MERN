@@ -27,7 +27,7 @@ function AppRouter() {
           <Route exact path="/signin" element={<Signin />} />
           <Route exact path="/books" element={<BookList />} />
           <Route exact path="/forgot-password" element={<ForgotPassword />} />
-          <Route exact path="/books:id" element={<BookDetail />} />
+          <Route exact path="/books/:book_id" element={<BookDetail />} />
           <Route
             exact
             path="/profile"

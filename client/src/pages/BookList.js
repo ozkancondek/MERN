@@ -54,12 +54,15 @@ const BookList = () => {
                 <MediaCard
                   key={index}
                   title={book?.title}
-                  description={book?.author}
+                  author={book?.author}
                   imgSrc={book?.image}
+                  description={book?.description}
+                  id={book?._id}
                 />
               );
             })
           : null}
+        {/*  //add here spinner */}
       </div>
     </div>
   );
