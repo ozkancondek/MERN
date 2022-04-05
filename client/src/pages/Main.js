@@ -1,19 +1,11 @@
-import { Layout, Button } from "antd";
-import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-
-const { Content } = Layout;
+import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
-  const { isLoggedIn, setLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   return (
     <div className="site-layout-content">
-      <Button
-        ghost
-        className="main-button"
-        /*      onClick={ } */
-      >
+      <Button ghost className="main-button" onClick={() => navigate("/books")}>
         Get Started
       </Button>
     </div>
